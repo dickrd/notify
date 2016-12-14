@@ -1,0 +1,19 @@
+{
+  "appName": {
+    "message": "Notify"
+  },
+  "appDesc": {
+    "message": "Notify from Hehehey.com"
+  },
+
+  "tipKey" : {
+    "message": "Subscribe Key"
+  },
+  "tipSaved" : {
+    "message": "Saved."
+  },
+
+  "actionSave" : {
+    "message": "Save"
+  }
+}

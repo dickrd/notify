@@ -7,16 +7,13 @@ var dog = new Audio("/audio/dog.wav");
 
 var lastUpdate = 0;
 
-function showNotify(opt) {
-    if (!opt) {
-        opt = {
-            type: "basic",
-            title: "Yes!",
-            message: "A new notification!",
-            iconUrl: "icon.png"
-        };
+function showNotify(item) {
+    if (item.opt) {
+        jumpUrl = item.url;
+        lastUpdate = item.lastUpdate;
+        chrome.notifications.create(id, item.opt, null);
+        playSound();
     }
-    chrome.notifications.create(id, opt, null);
 }
 
 function playSound() {
@@ -36,10 +33,7 @@ function request() {
             if (xhr.readyState == 4) {
                 var resp = JSON.parse(xhr.responseText);
                 if (resp && resp.status == "ok" && resp.data.lastUpdate > lastUpdate) {
-                    jumpUrl = resp.data.url;
-                    showNotify(resp.data.opt);
-                    playSound();
-                    lastUpdate = resp.data.lastUpdate;
+                    showNotify(resp.data);
                 }
             }
         };

@@ -1,21 +1,20 @@
+var title, label, userKey, save, success;
+
 // Saves options to chrome.storage.sync.
-function save_options() {
-    var userKey = document.getElementById('key').value;
+function saveOptions() {
     chrome.storage.sync.set({
-        key: userKey
+        key: userKey.value
     }, function () {
-        // Update status to let user know options were saved.
-        var status = document.getElementById('success');
-        status.style.display = "inline";
+        // Let user know options were saved.
+        success.style.display = "inline";
         setTimeout(function () {
-            status.style.display = "none";
+            success.style.display = "none";
         }, 750);
     });
 }
 
-// Restores select box and checkbox state using the preferences
-// stored in chrome.storage.
-function restore_options() {
+// Restores preferences stored in chrome.storage.
+function restoreOptions() {
     // Use default value.
     chrome.storage.sync.get({
         key: 'a1key'
@@ -23,6 +22,26 @@ function restore_options() {
         document.getElementById('key').value = items.key;
     });
 }
-document.addEventListener('DOMContentLoaded', restore_options);
-document.getElementById('save').addEventListener('click',
-    save_options);
+
+// Localize by replacing __MSG_***__ meta tags
+function localizeHtmlPage() {
+    title.innerText = chrome.i18n.getMessage("appName");
+    label.innerText = chrome.i18n.getMessage("tipKey");
+    save.innerText = chrome.i18n.getMessage("actionSave");
+    success.innerText = chrome.i18n.getMessage("tipSaved");
+}
+
+function getAllElements() {
+    title = document.getElementById('title');
+    label = document.getElementById('key-label');
+    userKey = document.getElementById('key');
+    save = document.getElementById('save');
+    success = document.getElementById('success');
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    getAllElements();
+    localizeHtmlPage();
+    restoreOptions();
+});
+document.getElementById('save').addEventListener('click', saveOptions);

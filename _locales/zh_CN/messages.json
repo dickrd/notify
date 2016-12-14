@@ -1,0 +1,19 @@
+{
+  "appName": {
+    "message": "Notify"
+  },
+  "appDesc": {
+    "message": "接受Hehehey.com的通知。"
+  },
+
+  "tipKey" : {
+    "message": "订阅标识"
+  },
+  "tipSaved" : {
+    "message": "已保存"
+  },
+
+  "actionSave" : {
+    "message": "保存"
+  }
+}
