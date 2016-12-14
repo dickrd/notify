@@ -1,2 +1,2 @@
 # notify
-A notification chrome extension from hehehey.com
+A notification chrome extension from Hehehey.com

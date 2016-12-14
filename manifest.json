@@ -2,8 +2,8 @@
   "manifest_version": 2,
 
   "name": "Notify",
-  "description": "Notify from hehehey.com",
-  "version": "1.0.0",
+  "description": "Notify from Hehehey.com",
+  "version": "1.0.1",
   "icons": {
     "128": "icon.png"
   },
@@ -13,7 +13,7 @@
   "browser_action": {},
   "options_ui": {
     "page": "html/options.html",
-    "chrome_style": true,
+    "chrome_style": true
   },
   "background": {
     "scripts": ["js/background.js"]
@@ -21,6 +21,7 @@
   "permissions": [
     "notifications",
     "alarms",
+    "storage",
     "http://*.hehehey.com/",
     "https://*.hehehey.com/"
   ]
