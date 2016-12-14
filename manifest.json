@@ -11,8 +11,12 @@
   "author": "DickRD",
 
   "browser_action": {},
+  "options_ui": {
+    "page": "html/options.html",
+    "chrome_style": true,
+  },
   "background": {
-    "scripts": ["background.js"]
+    "scripts": ["js/background.js"]
   },
   "permissions": [
     "notifications",
