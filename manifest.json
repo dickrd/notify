@@ -1,0 +1,23 @@
+{
+  "manifest_version": 2,
+
+  "name": "Notify",
+  "description": "Notify from hehehey.com",
+  "version": "1.0.0",
+  "icons": {
+    "128": "icon.png"
+  },
+
+  "author": "DickRD",
+
+  "browser_action": {},
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "permissions": [
+    "notifications",
+    "alarms",
+    "http://*.hehehey.com/",
+    "https://*.hehehey.com/"
+  ]
+}
