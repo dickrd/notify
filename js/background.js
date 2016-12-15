@@ -5,12 +5,10 @@ var jumpUrl;
 var sheep = new Audio("/audio/sheep.wav");
 var dog = new Audio("/audio/dog.wav");
 
-var lastUpdate = 0;
-
 function showNotify(item) {
     if (item.opt) {
         jumpUrl = item.url;
-        lastUpdate = item.lastUpdate;
+        chrome.storage.sync.set({lastUpdate: item.lastUpdate});
         chrome.notifications.create(id, item.opt, null);
         playSound();
     }
@@ -25,14 +23,15 @@ function playSound() {
 
 function request() {
     chrome.storage.sync.get({
-        key: 'a1key'
+        key: 'a1key',
+        lastUpdate: 0
     }, function (items) {
         var xhr = new XMLHttpRequest();
         xhr.open("GET", messageUrl + items.key, true);
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4) {
                 var resp = JSON.parse(xhr.responseText);
-                if (resp && resp.status == "ok" && resp.data.lastUpdate > lastUpdate) {
+                if (resp && resp.status == "ok" && resp.data.lastUpdate > items.lastUpdate) {
                     showNotify(resp.data);
                 }
             }
