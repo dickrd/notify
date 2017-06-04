@@ -1,6 +1,6 @@
 var id = "com.hehehey.notify";
 var homeUrl = "https://www.hehehey.com/";
-var messageUrl = "https://api.hehehey.com/message.json?key=";
+var messageUrl = "https://api.hehehey.com/notify/";
 var jumpUrl;
 var sheep = new Audio("/audio/sheep.wav");
 var dog = new Audio("/audio/dog.wav");
